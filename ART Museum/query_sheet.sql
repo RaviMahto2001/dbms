@@ -1,0 +1,35 @@
+USE ART_MUSEUM;
+
+/* Q1 */
+SELECT A.Fname, A.Lname, AO.Title 
+FROM ART_OBJECT AS AO, ARTIST AS A
+WHERE AO.ObId IN (SELECT PC.OBID FROM PERMANENT_COLLECTION AS PC) AND AO.AId = A.AId
+ORDER BY A.Fname ASC;
+
+/* Alternatively */
+SELECT A.Fname, A.Lname, AO.Title 
+FROM ART_OBJECT AS AO, ARTIST AS A, PERMANENT_COLLECTION AS PC
+WHERE PC.ObId = AO.ObId AND AO.AId = A.AId
+ORDER BY A.Fname ASC;
+
+
+/* Q2 */
+SELECT AO.Title
+FROM ART_OBJECT AS AO, ARTIST AS A, SCULPTURE AS S
+WHERE S.ObId = AO.ObId AND Ename = 'State Hermitage'
+AND AO.AId=A.AId AND A.Fname = 'Pablo' AND A.Lname = 'Picasso';
+
+/* Q3 */
+SELECT AO.Title
+FROM ART_OBJECT AS AO, SCULPTURE AS S
+WHERE S.Weight >= 5000 AND S.ObId = AO.ObId AND AO.Ename='State Hermitage';
+
+/* Q4 */
+SELECT A.Fname, A.Lname, AO.Title, A.Country
+FROM ART_OBJECT AS AO, ARTIST AS A
+WHERE AO.CYear LIKE '19%' AND A.AId = AO.AId;
+
+/* Q5 */
+SELECT A.Fname, A.Lname, AO.Title, A.Country
+FROM ART_OBJECT AS AO, ARTIST AS A
+WHERE AO.CYear LIKE '19%' AND A.AId = AO.AId;

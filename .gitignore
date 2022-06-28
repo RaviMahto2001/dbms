@@ -1,0 +1,12 @@
+/book/
+/sols/
+/screenshots/
+/ppt/
+
+*.png
+*.jpg
+*.exe
+*.o
+*.pdf
+*.docx
+*.ppt
